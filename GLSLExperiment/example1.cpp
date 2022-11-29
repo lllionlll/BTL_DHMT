@@ -27,6 +27,11 @@ color4 vertex_colors[8]; /*Danh sách các màu tương ứng cho 8 đỉnh hìn
 
 GLuint program;
 
+GLuint model_loc, view_loc, projection_loc;
+mat4 ctm;
+mat4 instance;
+mat4 model;
+
 void initCube()
 {
 	// Gán giá trị tọa độ vị trí cho các đỉnh của hình lập phương
@@ -110,15 +115,120 @@ void shaderSetup( void )
 	glEnableVertexAttribArray(loc_vColor);
 	glVertexAttribPointer(loc_vColor, 4, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(sizeof(points)));
 
+
+	model_loc = glGetUniformLocation(program, "model");
+	projection_loc = glGetUniformLocation(program, "projection");
+	view_loc = glGetUniformLocation(program, "view");
+
+	glEnable(GL_DEPTH_TEST);
+
     glClearColor( 1.0, 1.0, 1.0, 1.0 );        /* Thiết lập màu trắng là màu xóa màn hình*/
 }
 
+GLfloat CANH_DAI = 0.4, CANH_RONG = 0.2, CANH_CAO = 0.02;
+GLfloat DINH_DAI = 0.05, DINH_RONG = 0.05, DINH_CAO = 0.05;
+GLfloat DAY_DAI = 0.05, DAY_RONG = 0.05, DAY_CAO = 0.05;
+GLfloat TRUC_DAI = 0.05, TRUC_RONG = 0.04, TRUC_CAO = 0.2;
+GLfloat NOI_DAI = 0.05, NOI_RONG = 0.02, NOI_CAO = 0.05;
+GLfloat Theta[3] = { 0.0, 0.0, 0.0 };
 
+int xoayquat = 0;
+void truc()
+{
+	instance = Translate(0, DAY_CAO + TRUC_CAO / 2, 0) * Scale(TRUC_DAI, TRUC_CAO, TRUC_RONG);
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+
+void dinh()
+{
+	instance = Translate(0, DAY_CAO + TRUC_CAO + DINH_CAO / 2, 0) * Scale(DINH_DAI, DINH_CAO, DINH_RONG);
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+
+void day()
+{
+	instance = RotateY(xoayquat) * Translate(0, DAY_CAO / 2, 0) * Scale(DAY_DAI * 3, DAY_CAO, DAY_RONG * 3);
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+void canh_1()
+{
+	instance = RotateY(xoayquat) * Translate(DAY_DAI / 2 + NOI_DAI + CANH_DAI / 2, DAY_CAO / 2, 0)
+		* Scale(CANH_DAI, CANH_CAO, CANH_RONG/2);
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+void canh_2()
+{
+	// xoay quanh trục y 120 + độ xoay quạt
+	instance = RotateY(120 + xoayquat) * Translate(DAY_DAI / 2 + NOI_DAI + CANH_DAI / 2, DAY_CAO / 2, 0)
+		* Scale(CANH_DAI, CANH_CAO, CANH_RONG/2);
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+
+void canh_3()
+{
+	instance = RotateY(240 + xoayquat) * Translate(DAY_DAI / 2 + NOI_DAI + CANH_DAI / 2, DAY_CAO / 2, 0)
+		* Scale(CANH_DAI, CANH_CAO, CANH_RONG/2);
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+
+bool isSpin = false;
+
+
+void canhquat()
+{
+	if (isSpin) {   // nếu đang quay
+		xoayquat += 1;
+		if (xoayquat > 360) xoayquat = 0;
+		canh_1();
+		canh_2();
+		canh_3();
+		glutPostRedisplay();
+	}
+	else {
+		canh_1();
+		canh_2();
+		canh_3();
+	}
+}
+
+GLfloat eye_x = 2.0, eye_y = 1.0, eye_z = -1.5;
+GLfloat l = -0.8, r = 0.8;
+GLfloat bottom = -0.8, top = 0.8;
+GLfloat zNear = 1.9, zFar = 40.0;
+int quayX = 0;
+int quayY = 0;
+int quayZ = 0;
+float dichx = 0;
+float dichy = 0;
+float dichz = 0;
 void display( void )
 {
 	
-    glClear( GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT );                
-    glDrawArrays( GL_TRIANGLES, 0, NumPoints );    /*Vẽ các tam giác*/
+    glClear( GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT );
+	truc();
+	dinh();
+	day();
+	canh_1();
+	canh_2();
+	canh_3();
+	canhquat();
+	mat4 view = identity();
+	point4 eye(eye_x, eye_y, eye_z, 1.0);
+	point4 at(0.0, 0.0, 0.0, 1.0);
+	vec4 up(0.0, 1.0, 0.0, 0.0);
+	view = LookAt(eye, at, up);
+	view = view * Translate(dichx, dichy, dichz) * RotateX(quayX) * RotateY(quayY) * RotateZ(quayZ);
+	glUniformMatrix4fv(view_loc, 1, GL_TRUE, view);
+
+
+	mat4 p = Frustum(l, r, bottom, top, zNear, zFar);
+	glUniformMatrix4fv(projection_loc, 1, GL_TRUE, p);
 	glutSwapBuffers();									   
 }
 
@@ -128,9 +238,86 @@ void keyboard( unsigned char key, int x, int y )
 	// keyboard handler
 
     switch ( key ) {
-    case 033:			// 033 is Escape key octal value
-        exit(1);		// quit program
-        break;
+		case 033:			// 033 is Escape key octal value
+			exit(1);		// quit program
+			break;
+		case '1':
+			xoayquat += 50;
+			glutPostRedisplay();
+			break;
+		case '2':
+			isSpin = !isSpin;   // thay đổi giá trị true - false
+			glutPostRedisplay();
+			break;
+		case 'x':
+			l *= 1.1f; r *= 1.1f;
+			bottom *= 1.1f; top *= 1.1f;
+			glutPostRedisplay();
+			break;
+		case 'X':
+			l *= 0.9f; r *= 0.9f;
+			bottom *= 0.9f; top *= 0.9f;
+			glutPostRedisplay();
+			break;
+		case 'z':
+			zNear *= 1.1f; zFar *= 1.1f;
+			glutPostRedisplay();
+			break;
+		case 'Z':
+			zNear *= 0.9f; zFar *= 0.9f;
+			glutPostRedisplay();
+			break;
+		case '7':
+			quayX += 5;
+			glutPostRedisplay();
+			break;
+		case '8':
+			quayY += 5;
+			glutPostRedisplay();
+			break;
+		case '9':
+			quayZ += 5;
+			break;
+		case 'u':
+			dichx += 0.01;
+			glutPostRedisplay();
+			break;
+		case 'U':
+			dichx -= 0.01;
+			glutPostRedisplay();
+			break;
+		case 'i':
+			dichy += 0.01;
+			glutPostRedisplay();
+			break;
+		case 'I':
+			dichy -= 0.01;
+			glutPostRedisplay();
+			break;
+		case 'o':
+			dichz += 0.01;
+			glutPostRedisplay();
+			break;
+		case 'O':
+			dichz -= 0.01;
+			glutPostRedisplay();
+			break;
+		case ' ':
+			// reset values to their defaults
+			l = -0.8;
+			r = 0.8;
+			bottom = -0.8;
+			top = 0.8;
+			zNear = 1.9;
+			zFar = 40.0;
+			quayX = 0;
+			quayY = 0;
+			quayZ = 0;
+			dichx = 0;
+			dichy = 0;
+			dichz = 0;
+			glutPostRedisplay();
+			break;
     }
 }
 

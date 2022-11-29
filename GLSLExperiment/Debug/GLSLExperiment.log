@@ -1,1 +1,41 @@
-﻿  GLSLExperiment.vcxproj -> E:\Works\GIAOTRINH\DHMTCDIO\Thuchanh_Yen\BaiTHso3_2_project_Cube\Debug\GLSLExperiment.exe
+﻿cl : command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
+  example1.cpp
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(128,23): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(128,40): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(128,57): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(129,24): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(129,42): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(129,59): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(130,23): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(130,40): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(130,56): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(131,24): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(131,42): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(131,58): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(132,23): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(132,40): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(132,56): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(152,21): warning C4244: 'argument': conversion from 'int' to 'const GLfloat', possible loss of data
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(158,21): warning C4244: 'argument': conversion from 'int' to 'const GLfloat', possible loss of data
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(166,25): warning C4244: 'argument': conversion from 'int' to 'const GLfloat', possible loss of data
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(174,25): warning C4244: 'argument': conversion from 'int' to 'const GLfloat', possible loss of data
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(201,17): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(201,26): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(202,22): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(202,33): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(203,20): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(226,57): warning C4244: 'argument': conversion from 'int' to 'const GLfloat', possible loss of data
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(226,74): warning C4244: 'argument': conversion from 'int' to 'const GLfloat', possible loss of data
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(226,91): warning C4244: 'argument': conversion from 'int' to 'const GLfloat', possible loss of data
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(282,17): warning C4305: '+=': truncation from 'double' to 'float'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(286,17): warning C4305: '-=': truncation from 'double' to 'float'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(290,17): warning C4305: '+=': truncation from 'double' to 'float'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(294,17): warning C4305: '-=': truncation from 'double' to 'float'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(298,17): warning C4305: '+=': truncation from 'double' to 'float'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(302,17): warning C4305: '-=': truncation from 'double' to 'float'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(307,12): warning C4305: '=': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(308,11): warning C4305: '=': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(309,17): warning C4305: '=': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(310,13): warning C4305: '=': truncation from 'double' to 'GLfloat'
+D:\BTL_DHMT\GLSLExperiment\example1.cpp(311,15): warning C4305: '=': truncation from 'double' to 'GLfloat'
+  GLSLExperiment.vcxproj -> D:\BTL_DHMT\Debug\GLSLExperiment.exe
