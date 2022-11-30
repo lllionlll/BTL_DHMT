@@ -1,5 +1,4 @@
 ﻿cl : command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
-  InitShader.cpp
   example1.cpp
 D:\BTL_DHMT\GLSLExperiment\example1.cpp(140,22): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
 D:\BTL_DHMT\GLSLExperiment\example1.cpp(146,25): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
@@ -13,6 +12,6 @@ D:\BTL_DHMT\GLSLExperiment\example1.cpp(159,84): warning C4244: '=': conversion 
 D:\BTL_DHMT\GLSLExperiment\example1.cpp(164,23): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 D:\BTL_DHMT\GLSLExperiment\example1.cpp(164,80): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 D:\BTL_DHMT\GLSLExperiment\example1.cpp(164,118): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-  Generating Code...
+  LINK : D:\BTL_DHMT\Debug\GLSLExperiment.exe not found or not built by the last incremental link; performing full link
 example1.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
   GLSLExperiment.vcxproj -> D:\BTL_DHMT\Debug\GLSLExperiment.exe
