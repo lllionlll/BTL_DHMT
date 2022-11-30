@@ -38,4 +38,6 @@ D:\BTL_DHMT\GLSLExperiment\example1.cpp(308,11): warning C4305: '=': truncation 
 D:\BTL_DHMT\GLSLExperiment\example1.cpp(309,17): warning C4305: '=': truncation from 'double' to 'GLfloat'
 D:\BTL_DHMT\GLSLExperiment\example1.cpp(310,13): warning C4305: '=': truncation from 'double' to 'GLfloat'
 D:\BTL_DHMT\GLSLExperiment\example1.cpp(311,15): warning C4305: '=': truncation from 'double' to 'GLfloat'
+  LINK : D:\BTL_DHMT\Debug\GLSLExperiment.exe not found or not built by the last incremental link; performing full link
+example1.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
   GLSLExperiment.vcxproj -> D:\BTL_DHMT\Debug\GLSLExperiment.exe
